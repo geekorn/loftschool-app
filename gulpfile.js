@@ -12,10 +12,11 @@ global.$ = {
   gulp: require('gulp'),
   del: require('del'),
   browserSync: require('browser-sync').create(),
+  nodemon: require('nodemon'),
   gp: require('gulp-load-plugins')()
 };
 
-$.path.task.forEach(function(taskPath) {
+$.path.task.forEach(function (taskPath) {
   require(taskPath)();
 });
 
@@ -23,12 +24,14 @@ $.gulp.task('default', $.gulp.series(
   'clean',
   $.gulp.parallel(
     'sass',
-    'pug',
     'js:foundation',
     'js:process',
     'copy:image',
     'css:foundation',
     'sprite:svg'
+  ),
+  $.gulp.parallel(
+    'nodemon'
   ),
   $.gulp.parallel(
     'watch',

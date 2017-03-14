@@ -1,0 +1,43 @@
+-
+   var menu = [
+      {
+      title: 'Мои работы',
+      link: '/works'
+      },
+      {
+      title: 'Обо мне',
+      link: '/about'
+      },
+      {
+         title: 'Блог',
+         link: '/blog'
+      },{
+         title: 'Авторизация',
+         link: '/'
+         }
+      ]
+-
+   var socials = [
+   {
+      title: 'vk',
+      link: 'https://vk.com/id170986'
+   },
+   {
+      title: 'github',
+      link: 'https://github.com/geekorn'
+   },
+   {
+      title: 'in',
+      link: ''
+   }
+   ]
+
+footer.footer
+   .footer__top
+      +nav('footer-menu', 'inline', menu)
+      +social-round(socials, 'round')
+   .footer__bottom
+      .footer__text
+         p.
+            Я веб-разработчик из Москвы, и этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+      +copy-right

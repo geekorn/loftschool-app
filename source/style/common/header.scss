@@ -1,0 +1,189 @@
+.header {
+  width: 100%;
+  height: 100vh;
+  min-height: 550px;
+  position: relative;
+  overflow: hidden;
+}
+.header__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main-navigation {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($green-light, .87);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.5;
+
+  &_disabled {
+    display: none;
+  }
+}
+.main-menu__item {
+  margin-bottom: 90px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include phone {
+    margin-bottom: 45px;
+  }
+}
+.main-menu__link {
+  font-size: 63px;
+  font-family: bernier;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+
+  &:before, &:after {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 5px;
+    background-color: #fff;
+    opacity: .2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  $padding: -40px;
+  &:before {
+    left: $padding;
+  }
+  &:after {
+    right: $padding;
+  }
+
+  &:hover {
+    &:before, &:after {
+    opacity: 1;
+    }
+  }
+
+  @include tablet {
+    font-size: 49px;
+  }
+  @include phone {
+    font-size: 35px;
+  }
+}
+
+.header__container {
+  padding-top: 30px;
+  @extend %clearfix;
+
+  @include phone {
+    padding-top: 10px;
+  }
+}
+.header__socials {
+  @extend %left;
+  position: relative;
+}
+.header__hamburger {
+  @extend %right;
+  position: relative;
+}
+
+.hamburger-btn {
+  display: block;
+  width: 40px;
+  height: 35px;
+  position: relative;
+  z-index: 1100;
+
+  &_closed {
+    .hamburger-menu {
+      background-color: transparent;
+      &:before {
+        transform: rotate(-45deg);
+      }
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  @include phone {
+    width: 25px;
+    height: 22px;
+  }
+}
+
+.hamburger-menu {
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: .3s;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    border-radius: 3px;
+    background-color: #fff;
+    position: absolute;
+    transform-origin: right center;
+    transition: transform .3s;
+  }
+  &:before {
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+  }
+
+}
+
+.header__portfolio {
+  position: absolute;
+  top: 25.5%;
+  left: 0;
+  right: 0;
+  height: 250px;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+.header__user {
+  position: absolute;
+  top: 25.5%;
+  left: 0;
+  right: 0;
+  color: #fff;
+}
+
+.scroll-link {
+  display: inline-block;
+  @include centered(x);
+  opacity: .5;
+  z-index: 100;
+  &:hover {
+    opacity: 1;
+  }
+
+  &_down {
+    bottom: 13%;
+  }
+  &_up {
+    bottom: 70px;
+  }
+}

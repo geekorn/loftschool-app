@@ -1,0 +1,72 @@
+%clearfix {
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+%left {
+  float: left;
+}
+%right {
+  float: right;
+}
+
+@mixin inlineblock($value: top) {
+  display: inline-block;
+  vertical-align: $value;
+}
+
+@mixin centered($asix: 'both') {
+  position: absolute;
+
+  @if ($asix == 'both') {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @if ($asix == 'x') {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if ($asix == 'y') {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin phone-hor-orientation {
+  @media (max-width: 550px) {
+    @content;
+  }
+}
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@function rem($pxsize,$rembase:16px) {
+  @return ($pxsize/$rembase) + 0rem
+}
+

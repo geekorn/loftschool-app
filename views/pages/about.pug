@@ -1,0 +1,17 @@
+extends ../_template
+include ../_misc/mixin
+
+block variables
+	- var title = 'Обо мне'
+
+block content
+	include ../layouts/header
+
+	include ../common/about/about_me
+	include ../common/about/contacts
+
+	include ../layouts/footer
+
+block script
+	script(defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7BpAGQ0oStw_u3qaicBAy617Fu9062q0&callback=initMap")
+

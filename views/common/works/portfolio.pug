@@ -1,0 +1,43 @@
+.section__title
+	+main-title('Мои работы', 'works')
+
+.portfolio__wrapper
+
+	.column.column_left.portfolio__column.portfolio__column_left
+		.work
+			.work__preview
+				img.work__pic(src='')
+			.work__desc
+				.work__title.block-title
+				.work__technology
+				a.work__link(href="#")
+					svg.work__icon
+						use(xlink:href='assets/img/sprite/sprite.svg#link')
+					span Посмотреть сайт
+
+
+	.column.column_right.portfolio__column.portfolio__column_right
+		.work__slider.work-slider
+			.work__prev.toggle.column.column_left
+				a.toggle__link.toggle__link_prev(href="#")
+					svg.toggle__icon
+						use(xlink:href='assets/img/sprite/sprite.svg#portf_arrow_down')
+					ul.work-slider__list.work-slider__list_prev
+						li.work-slider__item(data-title="Сайт №1" data-technology="html, css" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio1.png")
+						li.work-slider__item(data-title="Сайт №2" data-technology="html, css, javascript" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio2.png")
+						li.work-slider__item(data-title="Сайт №3" data-technology="javascript" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio3.png")
+
+			.work__next.toggle.column.column_right
+				a.toggle__link.toggle__link_next(href="#")
+					svg.toggle__icon
+						use(xlink:href='assets/img/sprite/sprite.svg#portf_arrow_up')
+					ul.work-slider__list.work-slider__list_next
+						li.work-slider__item(data-title="Сайт №1" data-technology="html, css" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio1.png")
+						li.work-slider__item(data-title="Сайт №2" data-technology="html, css, javascript" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio2.png")
+						li.work-slider__item(data-title="Сайт №3" data-technology="javascript" data-link="http://loftschool.ru")
+							img.work-slider__img(src="assets/img/userfiles/portfolio3.png")

@@ -1,0 +1,28 @@
+.blog {
+  position: relative;
+}
+.blog-container {
+  @extend %clearfix;
+  padding: 70px 70px 0;
+  position: relative;
+  transition: .5s;
+
+  @include laptop {
+    padding: 50px 4%;
+  }
+}
+
+.articles {
+  width: 1310px/1800px * 100%;
+  @extend %right;
+
+  @include tablet {
+    float: none;
+    width: 100%;
+  }
+}
+
+
+@import "blog/header";
+@import "blog/sidebar";
+@import "blog/articles";

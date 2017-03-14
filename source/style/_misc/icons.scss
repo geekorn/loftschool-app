@@ -1,0 +1,105 @@
+.social__item {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 25px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.social__link {
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover .social__icon {
+    fill-opacity: 1;
+  }
+}
+
+.social__icon {
+  //display: inline-block;
+  width: 31px;
+  height: 22px;
+  fill-opacity: .5;
+}
+.social__list_color_white {
+  .social__icon {
+    fill: #fff;
+
+    @include phone {
+      width: 25px;
+      height: 18px;
+    }
+  }
+}
+.social__list_color_green {
+  .social__icon {
+    fill: $green-light;
+  }
+}
+
+.social-round__item {
+  display: inline-block;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.social-round__link {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(#fff, .5);
+  text-align: center;
+  //line-height: 38px;
+
+  &:hover {
+    background-color: #fff;
+    .social-round__icon {
+      fill-opacity: 1;
+      fill: $gray;
+    }
+  }
+}
+.social-round__icon {
+  width: 23px;
+  height: 16px;
+  fill: #fff;
+  fill-opacity: .5;
+  @include centered();
+}
+
+.contacts__icon {
+  fill: $green-light;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  @include inlineblock(middle);
+}
+
+.work__icon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  margin-right: 11px;
+  @include inlineblock(middle);
+}
+
+.toggle__icon {
+  width: 43px;
+  height: 27px;
+  fill: #fff;
+  transition: .2s;
+  @include centered();
+  z-index: 10;
+}
+
+.scroll-link__icon {
+  width: 26px;
+  height: 16px;
+  fill: #fff;
+  @include centered(x);
+  bottom: 13%;
+}

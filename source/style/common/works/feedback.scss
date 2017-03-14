@@ -1,0 +1,160 @@
+.feedback {
+  //background-image: url(../img/decor/feedback_bg.jpg);
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  //background-position: right 50%;
+  //padding-bottom: 167px;
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-title {
+  padding-bottom: 0;
+  position: relative;
+}
+
+.comments {
+  position: relative;
+  width: 780px;
+  margin: 0 auto;
+  margin-bottom: 70px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 0;
+
+  * {
+    font-size: 16px;
+  }
+
+  @include tablet {
+    max-width: 720px;
+    width: 96%;
+  }
+
+  @include phone-hor-orientation {
+    width: 95%;
+    flex-direction: column;
+    * {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.comments__item {
+  //@include inlineblock(top);
+  width: 50%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include phone-hor-orientation {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.comments__text {
+  position: relative;
+  padding-top: 60px;
+  margin-bottom: 25px;
+  background-image: url(../img/decor/quotes.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+
+  @include phone-hor-orientation {
+    background-position: center top;
+  }
+}
+
+.author__avatar {
+  @include inlineblock(middle);
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-right: 22px;
+}
+
+.author__pic {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.author__desc {
+  @include inlineblock(middle);
+  color: $green-light;
+}
+
+.author__name {
+  @include roboto(bold);
+}
+
+.feedback-blur-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.feedback__bg {
+  position: absolute;
+  //top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 900px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.feedback-form {
+  position: relative;
+  width: 380px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  height: 437px;
+  margin-bottom: 170px;
+
+  @include phone {
+    width: 95%;
+  }
+}
+
+.feedback-form__blur {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/decor/feedback_bg.jpg);
+  background-repeat: no-repeat;
+  //background-size: cover;
+  //background-position: 50% 50%;
+  filter: blur(10px);
+}
+
+.feedback-form__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 25px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.form__container {
+  padding: 0 20px;
+  position: relative;
+}
+

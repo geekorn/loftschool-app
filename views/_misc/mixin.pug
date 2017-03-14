@@ -1,0 +1,49 @@
+mixin user(color, title)
+	.user(class=( (color === 'black') ? `user_color_${color}` : '') )
+		.user__avatar
+			img(class="avatar__pic" src="assets/img/userfiles/avatar.jpg")
+		.user__name Корнеев Сергей
+		.user__desc Личный сайт веб разработчика
+
+mixin nav(className, modifier, items, active)
+	nav(class= className)
+		ul(class=`${className}__list`+ ( (modifier === 'inline') ? ` ${className}__list_inline` : '') )
+			each item, ndx in items
+				li(class=`${className}__item`)
+					a(class=`${className}__link` + ((ndx === active) ? ` ${className}__link_active` : '') href=`${item.link}`)= item.title
+
+
+
+mixin social(items, color)
+	ul.social__list(class=( (color) ? `social__list_color_${color}` : '') )
+		each item in items
+			li.social__item
+				a.social__link(class=`social__link_${item.title}` href=`${item.link}` target="_blank")
+					svg.social__icon
+						use(xlink:href=`assets/img/sprite/sprite.svg#${item.title}`)
+
+mixin social-round(items)
+	ul.social-round__list
+		each item in items
+			li.social-round__item
+				a.social-round__link(class=`social__link_${item.title}` href=`${item.link}` target="_blank")
+					svg.social-round__icon
+						use(xlink:href=`assets/img/sprite/sprite.svg#${item.title}`)
+
+mixin copy-right(modifier)
+	ul.copy-right(class=( (modifier) ? `copy-right_bold` : '') )
+		li.copy-right__item
+			span.copy-right__text &copy; Корнеев Сергей
+		li.copy-right__item
+			span.copy-right__text создано с любовью в Loftschool
+		li.copy-right__item
+			span.copy-right__text 2017
+
+mixin triangle
+	svg.triangle(viewBox="0 0 100 100" preserveAspectRatio="none")
+		polygon(points="0,0 50,100 100,0 100,100 0,100")
+
+mixin main-title(title, bg, modifier)
+	.main-title(
+			class=`main-title_${modifier}`
+			style=`background-image: url(assets/img/decor/${bg}_header.png)`)= title

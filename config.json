@@ -1,0 +1,15 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": "27017",
+    "name": "myportfolio",
+    "user": "",
+    "password": ""
+  },
+  "upload": "./upload",
+  "mail": {
+    "subject": "Сообщение с сайта портфолио",
+    "user": "serj.korneev@gmail.com",
+    "pass": "BE5qqK_85"
+  }
+}

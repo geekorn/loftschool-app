@@ -1,0 +1,34 @@
+.auth
+	.auth-title
+		.block-title авторизуйтесь
+	.auth__form
+		form(action="" method="" id="auth-form")
+			.form__container
+				.input-group.input-group_iconed
+					input.form-input(type="text" placeholder="Логин")
+					.input-group__icon-field
+						svg.input-group__icon
+							use(xlink:href='assets/img/sprite/sprite.svg#login')
+				.input-group.input-group_iconed
+					input.form-input(type="password" placeholder="Пароль")
+					.input-group__icon-field
+						svg.input-group__icon
+							use(xlink:href='assets/img/sprite/sprite.svg#password')
+				.auth-form__checkbox
+					label.checkbox
+						input.checkbox__fake(type="checkbox")
+						.checkbox__label Я человек
+				.auth-form__radio.radio-group
+					.radio-group__title Вы точно человек?
+					.radio-group__inputs
+						label.radio-btn
+							input.radio-btn__fake(type="radio" name="robot" value="yes")
+							.radio-btn__label Да
+						label.radio-btn
+							input.radio-btn__fake(type="radio" name="robot" value='no')
+							.radio-btn__label Не уверен
+				.input-error-msg
+
+			.auth-form__buttons.form__buttons
+				button.form__btn.btn-return(type="button") На главную
+				button.form__btn(type="submit") Войти

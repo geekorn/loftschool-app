@@ -1,0 +1,15 @@
+extends ../_template
+include ../_misc/mixin
+
+block variables
+   - var title = 'Мои работы'
+
+block content
+   include ../layouts/header
+
+   section.portfolio
+      +triangle
+      include ../common/works/portfolio
+   include ../common/works/feedback
+
+   include ../layouts/footer

@@ -1,0 +1,98 @@
+-
+	skills = [
+	{
+	title: "Frontend",
+	technologies: [
+			{
+			name: "HTML5",
+			percent: 75
+			},
+			{
+			name: "CSS3",
+			percent: 60
+			},
+			{
+			name: "JavaScript & jQuery",
+			percent: 25
+			}
+		]
+	},
+	{
+	title: "Backend",
+	technologies: [
+	{
+	name: "PHP",
+	percent: 25
+	},
+	{
+	name: "mySQL",
+	percent: 30
+	},
+	{
+	name: "Node.js & npm",
+	percent: 5
+	},
+	{
+	name: "Mongo.db",
+	percent: 5
+	}
+	]
+	},
+	{
+	title: "WorkFlow",
+	technologies: [
+	{
+	name: "Git",
+	percent: 50
+	},
+	{
+	name: "Gulp",
+	percent: 70
+	},
+	{
+	name: "Bower",
+	percent: 20
+	}
+	]
+	}
+
+	]
+
+
+section.section.l-about
+	.about__column.about__column_left
+		svg.triangle(viewBox="0 0 100 100" preserveAspectRatio="none")
+			polygon(points="0,0 100,100 0,100")
+
+		.section__title.section__title_fl_left
+			.main-title.main-title_about(style="background-image: url(assets/img/decor/about_header.png)") Обо мне
+		.about
+			.about__img
+				img(class="about__avatar" src="assets/img/userfiles/avatar.jpg")
+			.block-title Кто я
+			.about__desc
+				p.
+					Привет! Я веб разработчик из Москвы. Мне 30 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+				p.
+					Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+	.about__column.about__column_right
+		svg.triangle(viewBox="0 0 100 100" preserveAspectRatio="none")
+			polygon(points="100,0 100,100 0,100")
+		.skills
+			.block-title Чем я могу быть вам полезен
+			.skills__desc
+				p.
+					Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+			ul.skills-group
+				each skill in skills
+					li.skills-group__item
+						.skills-group__title= skill.title
+						ul.skills-list
+							each tech in skill.technologies
+								li.skills-list__item
+									.skill(data-percent= tech.percent)
+										svg.skill__circle(viewBox="0 0 100 100")
+											circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-first")
+											circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-second")
+										.skill__title= tech.name

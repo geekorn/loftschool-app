@@ -1,0 +1,47 @@
+.portfolio {
+  text-align: center;
+  position: relative;
+}
+.portfolio__wrapper {
+  @extend %clearfix;
+  height: 100vh;
+  min-height: 550px;
+}
+.column {
+  @extend %left;
+  width: 50%;
+  position: relative;
+
+
+
+  &_left {
+    background-color: #f0efe9;
+  }
+  &_right {
+    background-color: #efebe0;
+  }
+}
+.portfolio__column {
+  height: 100%;
+
+  @include tablet {
+    float: none;
+    width: 100%;
+  }
+
+  &_left {
+    @include tablet {
+      height: 80%;
+    }
+  }
+  &_right {
+    @include tablet {
+      height: 20%;
+    }
+  }
+}
+
+
+
+@import "works/portfolio";
+@import "works/feedback";

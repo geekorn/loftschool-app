@@ -1,0 +1,149 @@
+.l-about {
+  @extend %clearfix;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  @include tablet {
+    display: block;
+  }
+}
+.about__column {
+  @extend %left;
+  position: relative;
+  width: 50%;
+  padding-top: 20px;
+
+  @include tablet {
+    width: 100%;
+    min-width: 320px;
+    float: none;
+    position: static;
+
+    .triangle {
+      width: 50%;
+    }
+  }
+
+}
+
+.about__column_left {
+  background-color: #efeee9;
+  .triangle {
+    fill: #efeee9;
+  }
+}
+.about__column_right {
+  background-color: #eeebdf;
+  .triangle {
+    fill: #eeebdf;
+
+    @include tablet {
+      fill: #efeee9;
+      right: 0;
+      left: 50%;
+    }
+  }
+}
+//.about-conteiner {
+//  @include tablet {
+//    width: 100%;
+//    padding: 0 10px;
+//  }
+//}
+
+
+.section__title_fl_left {
+  @extend %left;
+  margin-top: -30px;
+  width: 46%;
+
+  @include desktop {
+    float: none;
+    width: 100%;
+  }
+}
+.main-title_about {
+  padding: 40px 80px 20px;
+  $padding: 30px;
+  &:before {
+    left: $padding;
+    top: 70px;
+  }
+  &:after {
+    right: $padding;
+    top: 70px;
+  }
+  @include desktop {
+    margin-bottom: 30px;
+  }
+
+  @include tablet {
+    padding-top: 30px;
+
+    &:before, &:after {
+      top: 52px;
+    }
+  }
+}
+.about {
+  width: 54%;
+  float: right;
+  padding: 0 20px;
+  text-align: center;
+  @include desktop {
+    width: 443px;
+    margin: 0 auto;
+    float: none;
+    padding: 0;
+    padding-bottom: 40px;
+  }
+
+  @include laptop {
+    width: 95%;
+  }
+  @include tablet {
+    width: 472px;
+    padding: 0;
+    padding-bottom: 40px;
+  }
+
+  @include phone {
+    width: 95%;
+    min-width: 300px;
+  }
+}
+
+.about__img {
+  width: 100%;
+  max-width: 444px;
+  //height: 390px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  overflow: hidden;
+  //border: 1px solid #000;
+
+  @include phone {
+    width: 99%;
+  }
+}
+.about__avatar {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.about__desc {
+  text-align: left;
+  padding-right: 40px;
+  p {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include tablet {
+    padding: 0;
+  }
+}

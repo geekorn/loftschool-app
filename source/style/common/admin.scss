@@ -1,0 +1,141 @@
+.admin-panel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.admin-content {
+  flex: 1;
+}
+
+.admin-header {
+  background-color: $green-light;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+}
+.admin-title {
+  display: block;
+}
+.admin-link {
+  display: block;
+}
+
+.admin-menu {
+  background-color: #f0efe9;
+}
+
+.admin-tabs {
+  display: flex;
+}
+.admin-tabs__item_active {
+  .admin-tabs__link {
+    background-color: #fff;
+    color: $green-light;
+  }
+}
+.admin-tabs__link {
+  display: block;
+  padding: 24px 70px;
+  color: #67787f;
+  text-decoration: none;
+  @include roboto(medium);
+  border-right: 3px solid #fff;
+}
+
+.admin-content {
+  background-image: url(../img/decor/header_bg.jpg);
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 0 50vmax rgba(#fff, .8);
+
+  padding: 50px;
+
+}
+
+.tab-content {
+  width: 100%;
+  height: 100%;
+}
+
+.tab-content__item {
+  display: none;
+
+  &_active {
+    display: block;
+  }
+}
+
+.tab-title {
+  @include roboto(medium);
+  font-size: 21px;
+  color: $black;
+  margin-bottom: 50px;
+}
+
+.admin-skills-group {
+  display: flex;
+  margin-bottom: 30px;
+}
+.admin-skills-group__item {
+  margin-right: 100px;
+}
+
+.admin-skills-group__title, .admin-block-title {
+  @include roboto(medium);
+  margin-bottom: 15px;
+}
+
+.admin-skills__list {
+  padding-left: 15px;
+}
+.admin-skills__item {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.admin-skill {
+  display: flex;
+  align-items: center;
+}
+
+.admin-skill__title {
+  width: 100px;
+}
+
+.admin-skill__input {
+
+  input {
+    width: 46px;
+    height: 32px;
+    border: none;
+    outline:none;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+}
+
+.admin-btn {
+  padding: 16px 20px;
+  background-color: $green-light;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.input-group_small {
+  width: 300px;
+  height: 45px;
+}
+.input-group_big {
+  width: 500px;
+  height: 166px;
+
+  textarea {
+    overflow-y: scroll;
+  }
+}

@@ -1,0 +1,36 @@
+-
+	contacts = [
+	{
+	title: 'Serj.Korneev',
+	icon: 'skype',
+	link: '#'
+	},
+	{
+	title: 'Serj.Korneev@gmail.com',
+	icon: 'envelope',
+	link: '#'
+	},
+	{
+	title: '8-999-999-9999',
+	icon: 'phone',
+	link: '#'
+	},
+	{
+	title: 'Москва, ул. Берзарина',
+	icon: 'map_marker',
+	link: 'https://yandex.ru/maps/-/CZxW4Tzy'
+	}
+	]
+
+section.l-contacts
+	.map#map
+		//img(src="assets/img/userfiles/map.jpg")
+	.contacts
+		.contacts__title.block-title контакты
+		ul.contacts__list
+			each contact in contacts
+				li.contacts__item
+					a.contacts__link(href= contact.link target="_blank")
+						svg.contacts__icon
+							use(xlink:href=`assets/img/sprite/sprite.svg#${contact.icon}`)
+						.contacts__text= contact.title

@@ -1,0 +1,60 @@
+-
+	var socials = [
+	{
+	title: 'vk',
+	link: 'https://vk.com/id170986'
+	},
+	{
+	title: 'github',
+	link: 'https://github.com/geekorn'
+	},
+	{
+	title: 'in',
+	link: ''
+	}
+	]
+-
+	var menu = [
+	{
+	title: 'Мои работы',
+	link: '/works'
+	},
+	{
+	title: 'Обо мне',
+	link: '/about'
+	},
+	{
+	title: 'Блог',
+	link: '/blog'
+	},{
+	title: 'Авторизация',
+	link: '/'
+	}
+	]
+
+header.header
+	.header__bg
+		img(class="header__pic" src="assets/img/decor/header_bg.jpg" alt="header-bg")
+	.main-navigation.main-navigation_disabled
+		+nav('main-menu', '', menu)
+	.container.header__container
+		.header__socials
+			+social(socials, 'white')
+		.header__hamburger
+			button(class="hamburger-btn" type="button")
+				.hamburger-menu
+	if title !== 'Блог'
+		.header__portfolio
+			img(class="header__portfolio-pic" src="assets/img/decor/portfolio_header.png" alt="header-bg")
+		.header__user
+			+user('white')
+	else
+		.header__user
+			.user
+				.user__avatar
+					img(class="avatar__pic" src="assets/img/userfiles/avatar.jpg")
+				+main-title('Блог', 'blog', 'blog')
+				.user__desc Статьи которые я написал
+	a(class="scroll-link scroll-link_down" href="#")
+		svg.scroll-link__icon
+			use(xlink:href='assets/img/sprite/sprite.svg#portf_arrow_down')

@@ -1,6 +1,59 @@
 extends ../_template
 
+include ../_misc/mixin
+
 block variables
+	-
+		var socials = [
+		{
+		title: 'vk',
+		link: 'https://vk.com/id170986'
+		},
+		{
+		title: 'github',
+		link: 'https://github.com/geekorn'
+		},
+		{
+		title: 'in',
+		link: ''
+		}
+		]
+	-
+		var menu = [
+		{
+		title: 'Мои работы',
+		link: '/works'
+		},
+		{
+		title: 'Обо мне',
+		link: '/about'
+		},
+		{
+		title: 'Блог',
+		link: '/blog'
+		}
+		]
 
 block content
-  include ../common/_greating
+	.preloader
+		.pleloader__content
+			.preloader__animation
+			.preloader__percent 0%
+	.index-wrapper
+		.welcome__background#paralax
+			include ../common/welcome/paralax
+		button.btn.auth-button(type="button") авторизоваться
+		.welcome-wrapper.flip-container
+			.flipper
+				include ../common/welcome/welcome
+				include ../common/welcome/login
+
+		.welcome__copyright
+			+copy-right('bold')
+
+		.welcome__error
+			.input-error-captcha
+				.input-error-captcha__close
+				.input-error-captcha__text Роботам тут не место
+
+block script

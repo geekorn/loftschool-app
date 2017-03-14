@@ -1,0 +1,72 @@
+extends ../_template
+
+
+block variables
+	include ../_misc/variables
+
+
+block content
+	.admin-panel
+		header.admin-header
+			h2.admin-title Панель администрирования
+			a.admin-link(href="/") Вернуться назад
+		.admin-menu
+			ul.admin-tabs
+				- for (var i = 1; i < 4; i++)
+					li.admin-tabs__item(class= (i == 1) ? "admin-tabs__item_active" : "" )
+						a.admin-tabs__link(href="#")= `TAB ${i}`
+		section.admin-content
+			ul.tab-content
+				li.tab-content__item.tab-content__item_active
+					section.tab-about
+						.tab-title Страница "Обо мне"
+						form(method="" action="")
+							ul.admin-skills-group
+								each skill in skills
+									li.admin-skills-group__item
+										.admin-skills-group__title= skill.title
+										ul.admin-skills__list
+											each tech in skill.technologies
+												li.admin-skills__item
+													.admin-skill
+														.admin-skill__title= tech.name
+														.admin-skill__input
+															input(type="text")
+															span %
+
+							button.admin-btn(type="submit") Сохранить
+
+				li.tab-content__item
+					section.admin-blog
+						.tab-title Страница "Блог"
+						form#new-post(method="" action="")
+							.admin-block-title Добавить запись
+							.input-group.input-group_small
+								input.form-input(name="title" type="text" placeholder="Название статьи")
+							.input-group.input-group_small
+								input.form-input(name="date" type="text" placeholder="Дата")
+							.input-group.input-group_big
+								textarea.form-input.form-input_area(name="text" placeholder="Содержание")
+
+							button.admin-btn(type="submit") Добавить
+
+
+				li.tab-content__item
+					section.admin-blog
+						.tab-title Страница "Мои работы"
+						form#upload(method="POST" action="/admin" enctype="multipart/form-data")
+							.admin-block-title Добавить работу
+							.input-group.input-group_small
+								input.form-input#work-title(name="workTitle" type="text" placeholder="Название проекта")
+							.input-group.input-group_small
+								input.form-input#work-tech(name="tech" type="text" placeholder="Технологии")
+							.input-group
+								input.form-upload#file-select(name="photo" type="file" required accept="image/*")
+
+							button.admin-btn(type="submit") Добавить
+
+			.admin-status
+				.status-msg
+					.status-msg__text
+					button.status-msg__btn(type="button") закрыть
+

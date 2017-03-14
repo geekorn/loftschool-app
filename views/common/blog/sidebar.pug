@@ -1,0 +1,20 @@
+-
+	posts = [
+	{
+	title: 'Самое важное в sass',
+	link: '#post1'
+	},
+	{
+	title: 'Приёмы в вёрстке, без которых не обходится ни один сайт',
+	link: '#post1'
+	},
+	{
+	title: 'post1',
+	link: '#post1'
+	}
+	]
+
+
+aside.sidebar
+	+nav('blog-menu', '', posts, 0)
+	button.sidemenu-btn.sidemenu-btn_disabled

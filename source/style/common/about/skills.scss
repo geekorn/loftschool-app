@@ -1,0 +1,118 @@
+.skills {
+  text-align: center;
+  padding: 0 39px 40px;
+
+  @include desktop {
+    padding: 0 10px 40px 39px;
+  }
+  @include tablet {
+    padding: 0;
+    padding-bottom: 50px;
+  }
+}
+
+.skills__desc {
+  text-align: left;
+  margin-bottom: 45px;
+  @include tablet {
+    width: 472px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+  }
+  @include phone {
+    width: 95%;
+    min-width: 300px;
+  }
+}
+
+.skills-group {
+  text-align: left;
+
+  @include tablet {
+    text-align: center;
+    min-width: 300px;
+  }
+}
+.skills-group__item {
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.skills-group__title {
+  font-size: 28px;
+  @include roboto(medium);
+  margin-bottom: 10px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  @include phone {
+    justify-content: center;
+  }
+}
+.skills-list__item {
+  //display: inline-block;
+  //margin-right: 35px;
+  flex: 0 0 146px;
+
+  //&:last-child {
+  //  margin-right: 0;
+  //}
+
+  @include tablet {
+    //display: inline-block;
+    margin-right: 0;
+  }
+  @include phone {
+    flex: 0 1 130px;
+  }
+}
+
+
+.skill {
+  position: relative;
+  display: inline-block;
+}
+.skill__circle {
+  width: 120px;
+  height: 120px;
+
+  @include desktop {
+    width: 110px;
+    height: 110px;
+  }
+  @include phone {
+    width: 100px;
+    height: 100px;
+  }
+}
+.circle {
+  fill: transparent;
+  stroke-width: 15;
+}
+.circle-first {
+  stroke: #deddd6;
+}
+.circle-second {
+  stroke: $green-light;
+}
+.skill__title {
+  @include roboto(medium);
+  font-size: 14px;
+  color: $green-light;
+  text-align: center;
+  max-width: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

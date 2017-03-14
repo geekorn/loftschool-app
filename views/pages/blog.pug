@@ -1,0 +1,18 @@
+extends ../_template
+include ../_misc/mixin
+
+block variables
+   - var title = 'Блог'
+
+block content
+   include ../layouts/header
+
+   section.blog
+      svg.triangle(viewBox="0 0 100 100" preserveAspectRatio="none")
+         polygon(points="0,0 50,100 100,0 100,100 0,100")
+
+      .blog-container
+         include ../common/blog/sidebar
+         include ../common/blog/articles
+
+   include ../layouts/footer

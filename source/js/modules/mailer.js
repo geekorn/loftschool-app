@@ -49,12 +49,10 @@ var SendData = (function () {
     var inputs = form.elements;
 
     for (var i = 0; i < inputs.length; i++) {
-      var elem = inputs[i],
-        obj = {};
+      var elem = inputs[i];
       if (inputs[i].tagName === 'BUTTON') continue;
       data[elem.name] = elem.value;
       // obj['percent'] = elem.value;
-
     }
 
     console.log(data);

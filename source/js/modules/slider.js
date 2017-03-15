@@ -1,5 +1,5 @@
 var Slider = (function () {
-  var items, // = $('.work-slider__item', '.work-slider__list_next'),
+  var items = $('.work-slider__item', '.work-slider__list_next'),
     index = 1,
     ndx,
     duration = 500,
@@ -7,54 +7,20 @@ var Slider = (function () {
     skills = $('.work__technology'),
     imgContainer = $('.work__pic');
 
-//запрос к серверу за данными
-  function sendRequest(url) {
-    return new Promise(function (resolve, reject) {
-      let xhr = new XMLHttpRequest();
-      xhr.open('POST', url, true);
-      xhr.onload = function (e) {
-        let result = JSON.parse(xhr.responseText);
-        resolve(result)
-      };
-      xhr.send();
-      xhr.onerror = function (e) {
-        reject()
-      }
-    })
-  }
-
-  //инициализация данных + рендеринг элементов
   function _init() {
+    var activeItem = items.eq(index),
+      imgSrc = activeItem.find('img').attr('src'),
+      activeTitle = activeItem.data('title'),
+      activeSlill = activeItem.data('technology');
 
-    //запрос к серверу, получаем промис с данными
-    sendRequest('/works/slider')
-      .then(function (result) {
-        items = result.workList; //массив работ в портфолио
+    imgContainer.attr('src', imgSrc);
+    title.text(activeTitle);
+    skills.text(activeSlill);
 
-        //контейнеры для картинок в кнопках слайдера
-        var prevContainer = $('.work-slider__list_prev'),
-          nextContainer = $('.work-slider__list_next');
-
-        //обрабатываем активный слайд
-        var activeItem = items[index];
-        imgContainer.attr('src', activeItem.picture);
-        title.text(activeItem.title);
-        skills.text(activeItem.technology);
-
-        //обрабатываем списки в кнопках
-        items.forEach(function(item, i) {
-          var li = $('<li class="work-slider__item">' +
-            '<img class="work-slider__img" alt="" src="' + item.picture + '" > </li>');
-
-          li.clone().appendTo(prevContainer);
-          li.clone().appendTo(nextContainer);
-        });
-
-        var nextItem = $('.work-slider__item', '.work-slider__list_next').eq(index + 1);
-        nextItem.addClass('work-slider__item_current');
-        var prevItem = $('.work-slider__item', '.work-slider__list_prev').eq(index - 1);
-        prevItem.addClass('work-slider__item_current');
-      })
+    var nextItem = $('.work-slider__item', '.work-slider__list_next').eq(index + 1);
+    nextItem.addClass('work-slider__item_current');
+    var prevItem = $('.work-slider__item', '.work-slider__list_prev').eq(index - 1);
+    prevItem.addClass('work-slider__item_current');
   }
 
   function animateSlide(ndx, container, direction) {

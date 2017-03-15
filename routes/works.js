@@ -8,29 +8,7 @@ const mongoose = require('mongoose');
 const config = require('../config.json');
 const smtpTransport = require('nodemailer-smtp-transport');
 
-/* GET home page. */
-router.get('/', function (req, res) {
-  let obj = {
-    title: 'Мои работы'
-  };
-
-  const Model = mongoose.model('work');
-
-  Model.find().then(items => {
-    Object.assign(obj, {items: items});
-    res.render('pages/works', obj);
-});
-});
-
-router.post('/slider', function (req, res) {
-  const Model = mongoose.model('work');
-
-  Model.find().then(items => {
-    res.json({workList: items});
-  });
-});
-
-
+// отправка почты
 router.post('/', function (req, res) {
   //validation
   let transporter = nodemailer.createTransport(smtpTransport({

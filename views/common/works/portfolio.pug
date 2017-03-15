@@ -25,7 +25,7 @@
 					ul.work-slider__list.work-slider__list_prev
 						each work in items
 							li.work-slider__item
-								img.work-slider__img(src=`${img.picture}` alt="")
+								img.work-slider__img(src=`${work.picture}` alt="")
 
 			.work__next.toggle.column.column_right
 				a.toggle__link.toggle__link_next(href="#")
@@ -33,5 +33,5 @@
 						use(xlink:href='assets/img/sprite/sprite.svg#portf_arrow_up')
 					ul.work-slider__list.work-slider__list_next
 						each work in items
-							li.work-slider__item
-								img.work-slider__img(src=`${img.picture}` alt="")
+							li.work-slider__item(data-title=`${work.title}` data-technology=`${work.technology}`)
+								img.work-slider__img(src=`${work.picture}` alt="")

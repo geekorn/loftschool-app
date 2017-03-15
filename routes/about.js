@@ -5,19 +5,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 const Model = mongoose.model('skill');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  let obj = {
-    title: 'Обо мне'
-  };
-
-  Model.find().then(items => {
-    Object.assign(obj, {items: items});
-    res.render('pages/about', obj);
-  });
-});
-
-
+// обновление навыков
 router.post('/', function (req, res) {
 
   Model.find().exec()

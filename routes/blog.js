@@ -4,23 +4,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-
-router.get('/', function(req, res) {
-  let obj = {
-    title: 'Блог'
-  };
-  const Model = mongoose.model('blog');
-
-  Model.find().then(items => {
-    Object.assign(obj, {items: items});
-    res.render('pages/blog', obj);
-  });
-});
-
-
+// добавление записи в блог
 router.post('/', function (req, res) {
-  //требуем наличия заголовка, даты и текста
-
   if (!req.body.title || !req.body.date || !req.body.text) {
     return res.json({status: 'Укажите данные'});
   }

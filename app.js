@@ -16,9 +16,9 @@ const uploadDir = config.upload;
 // подключаемся к БД
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
-  user: config.db.user,
-  password: config.db.password
+mongoose.connect(`mongodb://${config.database.host}:${config.database.port}/${config.database.name}`, {
+  user: config.database.user,
+  password: config.database.password
 }).catch(e => {
   console.error(e);
   throw e;
@@ -27,7 +27,20 @@ mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name
 // подключаем модели БД
 require('./models/blog');
 require('./models/works');
+require('./models/skills');
+require('./models/user');
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
+app.use(favicon(path.join(__dirname, 'public/assets/img', 'favicon.png')));
+app.use(logger('dev'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
+app.use(express.static(path.join(__dirname, currentStatic)));
 
 
 // подключаем маршруты (routes)
@@ -42,19 +55,6 @@ app.use('/works', works);
 app.use('/about', about);
 app.use('/blog', blog);
 app.use('/admin', admin);
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.use(favicon(path.join(__dirname, 'public/assets/img', 'favicon.png')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-app.use(express.static(path.join(__dirname, currentStatic)));
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -20,7 +20,7 @@ block content
 				li.tab-content__item.tab-content__item_active
 					section.tab-about
 						.tab-title Страница "Обо мне"
-						form(method="" action="")
+						form#skills(method="POST" action="/about")
 							ul.admin-skills-group
 								each skill in skills
 									li.admin-skills-group__item
@@ -31,7 +31,7 @@ block content
 													.admin-skill
 														.admin-skill__title= tech.name
 														.admin-skill__input
-															input(type="text")
+															input(name=`${tech.name}` type="text" value=`${tech.percent}`)
 															span %
 
 							button.admin-btn(type="submit") Сохранить
@@ -39,7 +39,7 @@ block content
 				li.tab-content__item
 					section.admin-blog
 						.tab-title Страница "Блог"
-						form#new-post(method="" action="")
+						form#new-post(method="POST" action="/blog")
 							.admin-block-title Добавить запись
 							.input-group.input-group_small
 								input.form-input(name="title" type="text" placeholder="Название статьи")
@@ -54,7 +54,7 @@ block content
 				li.tab-content__item
 					section.admin-blog
 						.tab-title Страница "Мои работы"
-						form#upload(method="POST" action="/admin" enctype="multipart/form-data")
+						form#new-work(method="POST" action="/admin" enctype="multipart/form-data")
 							.admin-block-title Добавить работу
 							.input-group.input-group_small
 								input.form-input#work-title(name="workTitle" type="text" placeholder="Название проекта")
@@ -66,7 +66,6 @@ block content
 							button.admin-btn(type="submit") Добавить
 
 			.admin-status
-				.status-msg
-					.status-msg__text
-					button.status-msg__btn(type="button") закрыть
+				.status Запись добавлена
+				button.status-btn.admin-btn(type="button" onclick="$('.admin-status').css('display', 'none')") Закрыть
 

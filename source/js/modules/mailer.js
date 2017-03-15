@@ -12,10 +12,10 @@ var SendData = (function () {
       text: form.text.value
     };
 
-    console.log(data);
     resultContainer.innerHTML = 'sending...';
     sendAjaxJson('/works', data, function (data) {
       resultContainer.innerHTML = data;
+      resultContainer.parentNode.style.display = 'block';
     });
   }
 
@@ -27,13 +27,41 @@ var SendData = (function () {
 
     let data = {
       title: form.title.value,
-      date: form.email.value,
+      date: form.date.value,
       text: form.text.value
     };
 
     resultContainer.innerHTML = 'sending...';
-    sendAjaxJson('/admin', data, function (data) {
+    sendAjaxJson('/blog', data, function (data) {
       resultContainer.innerHTML = data;
+      resultContainer.parentNode.style.display = 'block';
+    });
+  }
+
+  //подготовка скиллов
+  function prepareSkillData(e) {
+    e.preventDefault();
+    let form = e.target;
+    let resultContainer = document.querySelector('.status');
+    let data = {};
+
+    console.log(form);
+    var inputs = form.elements;
+
+    for (var i = 0; i < inputs.length; i++) {
+      var elem = inputs[i],
+        obj = {};
+      if (inputs[i].tagName === 'BUTTON') continue;
+      data[elem.name] = elem.value;
+      // obj['percent'] = elem.value;
+
+    }
+
+    console.log(data);
+
+    sendAjaxJson('/about', data, function (data) {
+      resultContainer.innerHTML = data;
+      resultContainer.parentNode.style.display = 'block';
     });
   }
 
@@ -54,7 +82,8 @@ var SendData = (function () {
 
   return {
     mail: prepareSendMail,
-    post: prepareSendPost
+    post: prepareSendPost,
+    skill: prepareSkillData
   }
 
 })();

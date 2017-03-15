@@ -5,8 +5,6 @@ var Validation = (function () {
 
   var _init = function (form) {
     var elems = form.elements;
-
-    console.log(elems);
     return _validate(elems) ? true : false;
   };
 
@@ -18,7 +16,6 @@ var Validation = (function () {
       var elem = inputs[i];
 
       if (elem.value == '') {
-        console.log(elem);
         return _showError(elem)
       }
 
@@ -34,7 +31,6 @@ var Validation = (function () {
     }
 
     return true;
-
   };
 
   function _showError(elem) {
@@ -50,7 +46,6 @@ var Validation = (function () {
   }
 
   function _clearError(elem) {
-    console.log(elem);
     elem.parentNode.classList.remove('input-group_error');
     errorField.style.display = 'none';
   }

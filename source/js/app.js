@@ -53,44 +53,52 @@ window.onload = function () {
   }
 
 
-  var form = document.querySelector('form');
+  var forms = document.querySelectorAll('form');
 
-  if (form !== null) {
-    //очистка ошибки
-    var inputs = form.elements;
-    var closeError = document.querySelector('.input-error-captcha__close');
+  if (forms !== null) {
 
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].onfocus = function() {
-        if (this.parentNode.classList.contains('input-group_error')) {
-          Validation.clear(this);
+    [].slice.call(forms).forEach(function (form) {
+
+      //очистка ошибки
+      var inputs = form.elements;
+      var closeError = document.querySelector('.input-error-captcha__close');
+
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].onfocus = function () {
+          if (this.parentNode.classList.contains('input-group_error')) {
+            Validation.clear(this);
+          }
         }
       }
-    }
 
-    if (closeError !== null) {
-      closeError.onclick = function() {
-        closeError.parentNode.parentNode.style.display = 'none';
-      };
-    }
-
-
-    var mailForm = document.querySelector('#mailer');
-    var newPost = document.querySelector('#new-post');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var valid = Validation.init(form);
-      console.log(valid);
-
-      if (valid) {
-        if (mailForm) SendData.mail(e);
-
-        if (newPost) SendData.post(e);
+      if (closeError !== null) {
+        closeError.onclick = function () {
+          closeError.parentNode.parentNode.style.display = 'none';
+        };
       }
 
+      var mailForm = document.querySelector('#mailer');
+      var newPost = document.querySelector('#new-post');
+      var newWork = document.querySelector('#new-work');
+      var skillForm = document.querySelector('#skills');
 
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var valid = Validation.init(form);
+
+        console.log(valid);
+
+        if (valid) {
+          if (e.target == mailForm) SendData.mail(e);
+
+          if (e.target == newPost) SendData.post(e);
+
+          if (e.target == skillForm) SendData.skill(e);
+
+          if (e.target == newWork) AddData.init(e);
+        }
+      })
 
     })
   }

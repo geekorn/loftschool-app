@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 const config = require('../config.json');
 const smtpTransport = require('nodemailer-smtp-transport');
 
@@ -13,14 +14,25 @@ router.get('/', function (req, res) {
     title: 'Мои работы'
   };
 
-  res.render('pages/works', obj);
+  const Model = mongoose.model('work');
+
+  Model.find().then(items => {
+    Object.assign(obj, {items: items});
+    res.render('pages/works', obj);
+});
+});
+
+router.post('/slider', function (req, res) {
+  const Model = mongoose.model('work');
+
+  Model.find().then(items => {
+    res.json({workList: items});
+  });
 });
 
 
 router.post('/', function (req, res) {
-
   //validation
-
   let transporter = nodemailer.createTransport(smtpTransport({
     service: 'gmail',
     auth: {
@@ -28,8 +40,6 @@ router.post('/', function (req, res) {
       pass: config.mail.pass
     }
   }));
-
-  console.log(req);
 
   let mailOptions = {
     from: req.body.email,
@@ -56,7 +66,7 @@ router.post('/', function (req, res) {
     };
     xhr.send(JSON.stringify(data));
   }
-
 });
+
 
 module.exports = router;

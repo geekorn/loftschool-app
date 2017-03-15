@@ -12,7 +12,7 @@ var AddData = (function () {
 
   function _prepareData(e) {
     e.preventDefault();
-    let resultContainer = document.querySelector('.error');
+    let resultContainer = document.querySelector('.status');
     let formData = new FormData();
     let file = document.querySelector('#file-select').files[0];
     let name = document.querySelector('#work-title').value;
@@ -26,7 +26,10 @@ var AddData = (function () {
     fileUpload('/admin', formData, function (data) {
       resultContainer.innerHTML = data;
     });
+  }
 
+  return {
+    init: _prepareData
   }
 
 })();

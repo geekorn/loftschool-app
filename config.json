@@ -1,12 +1,19 @@
 {
   "db": {
+    "host": "ds145359.mlab.com",
+    "port": "45359",
+    "name": "portfolio",
+    "user": "geekorn",
+    "password": "plokplok"
+  },
+  "database": {
     "host": "localhost",
     "port": "27017",
-    "name": "myportfolio",
-    "user": "",
-    "password": ""
+    "name": "test",
+    "user": "user",
+    "password": "plokplok"
   },
-  "upload": "./upload",
+  "upload": "./public/upload",
   "mail": {
     "subject": "Сообщение с сайта портфолио",
     "user": "serj.korneev@gmail.com",

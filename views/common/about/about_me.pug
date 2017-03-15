@@ -91,8 +91,10 @@ section.section.l-about
 						ul.skills-list
 							each tech in skill.technologies
 								li.skills-list__item
-									.skill(data-percent= tech.percent)
-										svg.skill__circle(viewBox="0 0 100 100")
-											circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-first")
-											circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-second")
-										.skill__title= tech.name
+									each item in items
+										if tech.name == item.title
+											.skill(data-percent= item.percent)
+												svg.skill__circle(viewBox="0 0 100 100")
+													circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-first")
+													circle(r="40" cx="50" cy="50" transform="rotate(-90 50 50)" class="circle circle-second")
+												.skill__title= tech.name

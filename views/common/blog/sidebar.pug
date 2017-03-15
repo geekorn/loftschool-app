@@ -1,20 +1,8 @@
--
-	posts = [
-	{
-	title: 'Самое важное в sass',
-	link: '#post1'
-	},
-	{
-	title: 'Приёмы в вёрстке, без которых не обходится ни один сайт',
-	link: '#post1'
-	},
-	{
-	title: 'post1',
-	link: '#post1'
-	}
-	]
-
-
 aside.sidebar
-	+nav('blog-menu', '', posts, 0)
+	//+nav('blog-menu', '', posts, 0)
+	nav(class='blog-menu')
+		ul(class='blog-menu__list')
+			each post,ndx in items
+				li(class='blog-menu__item')
+					a.blog-menu__link(class=((ndx === 0) ? 'blog-menu__link_active':'') href="#")= post.title
 	button.sidemenu-btn.sidemenu-btn_disabled

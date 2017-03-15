@@ -16,4 +16,4 @@ const WorkSchema = new Schema({
   }
 });
 
-mongoose.model('works', WorkSchema);
+module.exports = mongoose.model('work', WorkSchema);

@@ -36,7 +36,9 @@ router.post('/', function (req, res) {
         fs.unlink(path.join(files.photo.path, files.photo.name));
       }
 
-      let dir = config.upload.substr(config.upload.indexOf('/'));
+      let dir = config.upload.substr(config.upload.indexOf('assets'));
+
+      console.log(dir);
       const item = new Model({
         title: fields.name,
         technology: fields.tech,
@@ -48,9 +50,5 @@ router.post('/', function (req, res) {
     })
   })
 });
-
-
-
-
 
 module.exports = router;

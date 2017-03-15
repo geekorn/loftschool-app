@@ -7,61 +7,48 @@ var Slider = (function () {
     skills = $('.work__technology'),
     imgContainer = $('.work__pic');
 
-  // var sliders = function () {
-  //   let xhr = new XMLHttpRequest();
-  //   xhr.open('POST', '/works/slider', true);
-  //   xhr.onload = function (e) {
-  //     let result = JSON.parse(xhr.responseText);
-  //     return result;
-  //   };
-  //   xhr.send();
-  // }
+//запрос к серверу за данными
+  function sendRequest(url) {
+    return new Promise(function (resolve, reject) {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', url, true);
+      xhr.onload = function (e) {
+        let result = JSON.parse(xhr.responseText);
+        resolve(result)
+      };
+      xhr.send();
+      xhr.onerror = function (e) {
+        reject()
+      }
+    })
+  }
 
+  //инициализация данных + рендеринг элементов
   function _init() {
-    function sendRequest(url) {
-      return new Promise(function (resolve, reject) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-        xhr.onload = function (e) {
-          let result = JSON.parse(xhr.responseText);
-          resolve(result)
-        };
-        xhr.send();
-        xhr.onerror = function (e) {
-          reject()
-        }
-      })
-    }
 
+    //запрос к серверу, получаем промис с данными
     sendRequest('/works/slider')
       .then(function (result) {
-        items = result.workList;
+        items = result.workList; //массив работ в портфолио
 
+        //контейнеры для картинок в кнопках слайдера
         var prevContainer = $('.work-slider__list_prev'),
           nextContainer = $('.work-slider__list_next');
-        // items = Array.prototype.slice.call(items);
 
-        console.log(items);
+        //обрабатываем активный слайд
         var activeItem = items[index];
-          // imgSrc = activeItem.find('img').attr('src'),
-          // activeTitle = activeItem.data('title'),
-          // activeSlill = activeItem.data('technology');
-        // console.log(activeItem.picture);
-
-        items.forEach(function(item, i) {
-
-          var li = $('<li class="work-slider__item">' +
-            '<img alt="" src="' + item.picture + '" > </li>');
-          console.log(li);
-          prevContainer.append(li);
-          nextContainer.append(li);
-          console.log(prevContainer);
-        });
-
-
         imgContainer.attr('src', activeItem.picture);
         title.text(activeItem.title);
         skills.text(activeItem.technology);
+
+        //обрабатываем списки в кнопках
+        items.forEach(function(item, i) {
+          var li = $('<li class="work-slider__item">' +
+            '<img class="work-slider__img" alt="" src="' + item.picture + '" > </li>');
+
+          li.clone().appendTo(prevContainer);
+          li.clone().appendTo(nextContainer);
+        });
 
         var nextItem = $('.work-slider__item', '.work-slider__list_next').eq(index + 1);
         nextItem.addClass('work-slider__item_current');

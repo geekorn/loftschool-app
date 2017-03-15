@@ -13,7 +13,7 @@
     "user": "user",
     "password": "plokplok"
   },
-  "upload": "./public/upload",
+  "upload": "public/assets/img/upload",
   "mail": {
     "subject": "Сообщение с сайта портфолио",
     "user": "serj.korneev@gmail.com",

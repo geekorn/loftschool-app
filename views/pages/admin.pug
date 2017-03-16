@@ -30,8 +30,8 @@ block content
 												li.admin-skills__item
 													.admin-skill
 														.admin-skill__title= tech.name
-														.admin-skill__input
-															input(name=`${tech.name}` type="text" value=`${tech.percent}`)
+														.admin-skill__input(data-category=`${skill.title}`)
+															input(name=`${tech.name}` data-category=`${skill.title}` type="text" value=`${tech.percent}`)
 															span %
 
 							button.admin-btn(type="submit") Сохранить

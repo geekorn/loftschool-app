@@ -11,7 +11,6 @@ var Preloader = (function () {
     return new Promise(function (resolve, reject) {
       img.onload = function () {
         percent = Math.ceil(percent + percentStep);
-        console.log(percent, percentStep);
         procentField.innerHTML = percent + '%';
         resolve(img);
       };

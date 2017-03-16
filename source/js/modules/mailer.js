@@ -43,16 +43,37 @@ var SendData = (function () {
     e.preventDefault();
     let form = e.target;
     let resultContainer = document.querySelector('.status');
-    let data = {};
 
-    console.log(form);
     var inputs = form.elements;
+
+    let data = [];
 
     for (var i = 0; i < inputs.length; i++) {
       var elem = inputs[i];
       if (inputs[i].tagName === 'BUTTON') continue;
-      data[elem.name] = elem.value;
-      // obj['percent'] = elem.value;
+      // console.log(elem.dataset.category);
+      var obj = {
+        category: elem.dataset.category,
+        tech: [
+          {
+            title: elem.name,
+            percent: elem.value
+          }
+        ]
+      };
+
+      if (!data.length) {
+        data.push(obj);
+      } else {
+        var ndx = data.findIndex(function (item) {
+          return item.category == obj.category
+        });
+        if (ndx >= 0) {
+          data[ndx].tech = data[ndx].tech.concat(obj.tech)
+        } else {
+          data.push(obj);
+        }
+      }
     }
 
     console.log(data);
@@ -64,7 +85,7 @@ var SendData = (function () {
   }
 
 
-  //отправка данных на сервер
+//отправка данных на сервер
   function sendAjaxJson(url, data, cb) {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
@@ -77,11 +98,11 @@ var SendData = (function () {
   }
 
 
-
   return {
     mail: prepareSendMail,
     post: prepareSendPost,
     skill: prepareSkillData
   }
 
-})();
+})
+();

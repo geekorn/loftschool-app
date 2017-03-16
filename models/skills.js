@@ -6,7 +6,7 @@ const Skills = new Schema({
   title: {
     type: String
   },
-  percent: {
+  data: {
     type: String
   }
 });

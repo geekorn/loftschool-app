@@ -7,14 +7,15 @@ const Model = mongoose.model('skill');
 
 // обновление навыков
 router.post('/', function (req, res) {
+  let item = new Model ({
+    title: "skills",
+    data: req.body
+  });
 
-  Model.find().exec()
-    .then( function() {
-      for (let key in req.body) {
-
-        Model.update({title: key}, {$set: {percent: req.body[key]}}, {insert: true})
-      }
-  })
+  // Model.update({title: key}, {$set: {percent: req.body[key]}}, {insert: true})
+  //     }
+  // })
+  item.save()
     .then(
     (i) => {return res.json({status: 'Запись добавлена'});},
   (e) => {

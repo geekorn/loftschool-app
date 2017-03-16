@@ -67,7 +67,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-server.listen(3000, 'localhost');
+server.listen(3000, '0000');
 server.on('listening', function () {
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);

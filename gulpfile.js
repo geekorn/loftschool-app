@@ -37,4 +37,14 @@ $.gulp.task('default', $.gulp.series(
     'watch',
     'serve'
   )
+
+));
+
+$.gulp.task('prod', $.gulp.parallel(
+  'sass',
+  'js:foundation',
+  'js:process',
+  'assets',
+  'css:foundation',
+  'sprite:svg'
 ));

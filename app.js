@@ -16,10 +16,8 @@ const uploadDir = config.upload;
 // подключаемся к БД
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${config.database.host}:${config.database.port}/${config.database.name}`, {
-  user: config.database.user,
-  password: config.database.password
-}).catch(e => {
+mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds145359.mlab.com:45359/portfolio`)
+  .catch(e => {
   console.error(e);
   throw e;
 });

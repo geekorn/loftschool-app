@@ -7,11 +7,7 @@ const mongoose = require('mongoose'),
   rl = readline.createInterface({input: process.stdin, output: process.stdout});
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${config.database.host}:${config.database.port}/${config.database.name}`, {
-  user: config.database.user,
-  password: config.database.password
-})
-
+mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds145359.mlab.com:45359/portfolio`)
 
 //логин и пароль, изначально пустые
 let login = '',

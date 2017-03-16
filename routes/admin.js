@@ -8,6 +8,19 @@ const path = require('path');
 const mongoose = require('mongoose');
 const config = require('../config.json');
 
+/* GET admin page. */
+const isAdmin = (req, res, next) => {
+  if (req.session.isAdmin) return next();
+  res.redirect('/')
+}
+router.get('/', isAdmin, function (req, res) {
+  let obj = {
+    title: 'Панель админа'
+  };
+
+  res.render('pages/admin', obj);
+});
+
 // загрузка работ из админки
 router.post('/', function (req, res) {
   let form = new formidable.IncomingForm();

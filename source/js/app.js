@@ -81,6 +81,7 @@ window.onload = function () {
       var newPost = document.querySelector('#new-post');
       var newWork = document.querySelector('#new-work');
       var skillForm = document.querySelector('#skills');
+      var authForm = document.querySelector('#authForm');
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -97,6 +98,8 @@ window.onload = function () {
           if (e.target == skillForm) SendData.skill(e);
 
           if (e.target == newWork) AddData.init(e);
+
+          if (e.target == authForm) SendData.auth(e);
         }
       })
 

@@ -2,21 +2,21 @@
 	.auth-title
 		.block-title авторизуйтесь
 	.auth__form
-		form(action="" method="" id="auth-form")
+		form#authForm(action="login" method="POST")
 			.form__container
 				.input-group.input-group_iconed
-					input.form-input(type="text" placeholder="Логин")
+					input.form-input(name="username" type="text" placeholder="Логин")
 					.input-group__icon-field
 						svg.input-group__icon
 							use(xlink:href='assets/img/sprite/sprite.svg#login')
 				.input-group.input-group_iconed
-					input.form-input(type="password" placeholder="Пароль")
+					input.form-input(name="password" type="password" placeholder="Пароль")
 					.input-group__icon-field
 						svg.input-group__icon
 							use(xlink:href='assets/img/sprite/sprite.svg#password')
 				.auth-form__checkbox
 					label.checkbox
-						input.checkbox__fake(type="checkbox")
+						input.checkbox__fake(name="human" type="checkbox")
 						.checkbox__label Я человек
 				.auth-form__radio.radio-group
 					.radio-group__title Вы точно человек?

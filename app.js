@@ -5,10 +5,15 @@ const fs = require('fs');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const server = http.createServer(app);
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const currentStatic = require('./gulp/config').root;
+const crypto = require('crypto');
+const passport = require('passport');
 
 const config = require('./config.json');
 const uploadDir = config.upload;
@@ -37,9 +42,21 @@ app.use(logger('dev'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-app.use(express.static(path.join(__dirname, currentStatic)));
+app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, currentStatic)));
+app.use(session({
+  secret: 'secret',
+  key: 'keys',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    naxAge: null
+  },
+  saveUninitialized: false,
+  resave: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
+}));
 
 // подключаем маршруты (routes)
 const index = require('./routes/index');
@@ -47,12 +64,14 @@ const works = require('./routes/works');
 const about = require('./routes/about');
 const blog = require('./routes/blog');
 const admin = require('./routes/admin');
+const login = require('./routes/login');
 
 app.use('/', index);
 app.use('/works', works);
 app.use('/about', about);
 app.use('/blog', blog);
 app.use('/admin', admin);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

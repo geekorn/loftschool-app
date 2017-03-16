@@ -13,14 +13,7 @@ router.get('/', function(req, res) {
   res.render('pages/index', obj);
 });
 
-/* GET admin page. */
-router.get('/admin', function (req, res) {
-  let obj = {
-    title: 'Панель админа'
-  };
 
-  res.render('pages/admin', obj);
-});
 
 /* GET my works page */
 router.get('/works', function (req, res) {

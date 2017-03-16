@@ -1,11 +1,10 @@
 var SendData = (function () {
 
+  let resultContainer = document.querySelector('.status');
   //подготовка данных к отправке
   function prepareSendMail(e) {
     e.preventDefault();
     let form = e.target;
-    let resultContainer = document.querySelector('.status');
-
     let data = {
       name: form.name.value,
       email: form.email.value,
@@ -23,8 +22,6 @@ var SendData = (function () {
   function prepareSendPost(e) {
     e.preventDefault();
     let form = e.target;
-    let resultContainer = document.querySelector('.status');
-
     let data = {
       title: form.title.value,
       date: form.date.value,
@@ -42,10 +39,7 @@ var SendData = (function () {
   function prepareSkillData(e) {
     e.preventDefault();
     let form = e.target;
-    let resultContainer = document.querySelector('.status');
-
-    var inputs = form.elements;
-
+    let inputs = form.elements;
     let data = [];
 
     for (var i = 0; i < inputs.length; i++) {
@@ -75,13 +69,28 @@ var SendData = (function () {
         }
       }
     }
-
     console.log(data);
 
     sendAjaxJson('/about', data, function (data) {
       resultContainer.innerHTML = data;
       resultContainer.parentNode.style.display = 'block';
     });
+  }
+
+
+  //авторизация
+  function preparePersonal (e) {
+    e.preventDefault();
+    let form = e.target;
+
+    let data = {
+      login: form.username.value,
+      password: form.password.value
+    };
+
+    sendAjaxJson('/login', data, function (data) {
+      $('.input-error-msg').text(data);
+    })
   }
 
 
@@ -101,7 +110,8 @@ var SendData = (function () {
   return {
     mail: prepareSendMail,
     post: prepareSendPost,
-    skill: prepareSkillData
+    skill: prepareSkillData,
+    auth: preparePersonal
   }
 
 })

@@ -87,6 +87,8 @@ section.section.l-about
 			ul.skills-group
 
 				each item in skills
+					if item
+						console.log(item)
 					each skill in item.data
 						li.skills-group__item
 							.skills-group__title= skill.category

@@ -1,4 +1,9 @@
 {
+  "http": {
+    "host": "localhost",
+    "port": "3000",
+    "publicRoot": "public"
+  },
   "db": {
     "host": "ds145359.mlab.com",
     "port": "45359",

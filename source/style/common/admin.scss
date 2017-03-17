@@ -20,6 +20,11 @@
 }
 .admin-link {
   display: block;
+  color: rgba(#fff, .7);
+
+  &:hover {
+    color: rgba(#fff, 1);
+  }
 }
 
 .admin-menu {

@@ -36,7 +36,7 @@ router.get('/about', function(req, res) {
   };
   let Model = mongoose.model('skill');
 
-  Model.find().then(items => {
+  Model.findOne().then(items => {
     console.log(items);
     Object.assign(obj, {skills: items});
   res.render('pages/about', obj);

@@ -7,7 +7,7 @@ const Skills = new Schema({
     type: String
   },
   data: {
-    type: String
+    type: []
   }
 });
 

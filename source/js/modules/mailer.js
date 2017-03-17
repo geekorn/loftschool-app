@@ -89,6 +89,7 @@ var SendData = (function () {
     };
 
     sendAjaxJson('/login', data, function (data) {
+
       $('.input-error-msg').text(data);
     })
   }

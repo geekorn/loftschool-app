@@ -87,8 +87,11 @@ section.section.l-about
 			ul.skills-group
 
 				each item in skills
-					if item
-						console.log(item)
+					script.
+						if (item)
+							console.log(item.data)
+						else
+							console.log('z nen' + skills)
 					each skill in item.data
 						li.skills-group__item
 							.skills-group__title= skill.category
